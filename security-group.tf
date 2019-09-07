@@ -15,15 +15,19 @@ resource "aws_security_group" "db" {
     cidr_blocks = [ "0.0.0.0/0" ]
   }
 
-  #dynamic "ingress" {
-  #  iterator = i
-  #  for_each = [ for r in var.security_group_rules: {
-  #    from_port = r.from_port
-  #  }]
-  #  content {
-  #  
-  #  }
-  #}
+  dynamic "ingress" {
+    iterator = i
+    for_each = var.security_group_rules
+    content {
+      from_port       = i.value.from_port
+      to_port         = i.value.to_port
+      protocol        = i.value.protocol
+      self            = i.value.self
+      cidr_blocks     = i.value.cidr_blocks
+      security_groups = i.value.security_groups
+      description     = i.value.description
+    }
+  }
 
   tags = merge(
     var.tags,

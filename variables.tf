@@ -200,6 +200,7 @@ variable "security_group_rules" {
     self            = bool
     cidr_blocks     = list(string)
     security_groups = list(string)
+    description     = string
   }))
   description = "(optional - default: []) List of security group rules for the SG created by this module"
   default     = []
