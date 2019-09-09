@@ -6,7 +6,7 @@ resource "aws_route53_record" "db" {
   zone_id = var.route53_zone_id
   name    = var.route53_record
   type    = "CNAME"
-  records = [ aws_db_instance.db.endpoint ]
+  records = [ aws_db_instance.db.address ]
   ttl     = var.route53_record_ttl
 }
 
