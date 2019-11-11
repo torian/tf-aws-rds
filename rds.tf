@@ -21,6 +21,10 @@ resource "aws_db_instance" "db" {
   allocated_storage      = var.allocated_storage
   max_allocated_storage  = var.max_allocated_storage
 
+  monitoring_interval          = var.monitoring_interval
+  monitoring_role_arn          = local.monitoring_role_arn
+  performance_insights_enabled = var.performance_insights_enabled
+
   iam_database_authentication_enabled = var.iam_auth_enabled
 
   name     = local.db_name
@@ -41,5 +45,9 @@ resource "aws_db_instance" "db" {
   enabled_cloudwatch_logs_exports = var.cloudwatch_logs_exports
 
   tags = var.tags
+}
+
+output "master" {
+  value = aws_db_instance.db
 }
 

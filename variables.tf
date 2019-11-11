@@ -102,6 +102,12 @@ variable "monitoring_role_arn" {
   default     = ""
 }
 
+variable "performance_insights_enabled" {
+  type        = bool
+  description = "(optional - default: true)" 
+  default     = true
+}
+
 variable "minor_version_upgrade" {
   type        = bool
   description = "(optional - default: true) Automatically upgrade minor version"
