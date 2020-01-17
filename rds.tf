@@ -21,6 +21,7 @@ resource "aws_db_instance" "db" {
   storage_encrypted      = var.storage_encrypted
   allocated_storage      = var.allocated_storage
   max_allocated_storage  = var.max_allocated_storage
+  ca_cert_identifier     = var.ca_cert_identifier
 
   monitoring_interval          = var.monitoring_interval
   performance_insights_enabled = var.performance_insights_enabled

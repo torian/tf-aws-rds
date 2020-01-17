@@ -61,6 +61,12 @@ variable "max_allocated_storage" {
   default     = 0
 }
 
+variable "ca_cert_identifier" {
+  type        = string
+  description = "(optional - default: rds-ca-2019)"
+  default     = "rds-ca-2019"
+}
+
 variable "storage_encrypted" {
   type        = bool
   description = "(optional)"
