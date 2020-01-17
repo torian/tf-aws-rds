@@ -9,7 +9,8 @@ resource "aws_db_instance" "db" {
   port                   = local.port
   availability_zone      = local.availability_zone
   multi_az               = var.multi_az
-  db_subnet_group_name   = local.db_subnet_group
+  #db_subnet_group_name   = local.db_subnet_group
+  db_subnet_group_name  = var.db_subnet_group_name != "" ? var.db_subnet_group_name : aws_db_subnet_group.db[0].id
   publicly_accessible    = false
   vpc_security_group_ids = local.security_group_ids
   parameter_group_name   = local.parameter_group
@@ -22,8 +23,8 @@ resource "aws_db_instance" "db" {
   max_allocated_storage  = var.max_allocated_storage
 
   monitoring_interval          = var.monitoring_interval
-  monitoring_role_arn          = local.monitoring_role_arn
   performance_insights_enabled = var.performance_insights_enabled
+  monitoring_role_arn          = var.monitoring_role_arn != "" ? var.monitoring_role_arn : aws_iam_role.db[0].arn
 
   iam_database_authentication_enabled = var.iam_auth_enabled
 

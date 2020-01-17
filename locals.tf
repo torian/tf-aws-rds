@@ -14,7 +14,6 @@ locals {
 
   availability_zone     = var.az != "" ? var.az : null
 
-  db_subnet_group       = var.db_subnet_group_name != "" ? var.db_subnet_group_name : aws_db_subnet_group.db[0].id
   parameter_group       = null
 
   iops                  = var.iops > 0 ? var.iops : null
@@ -22,7 +21,6 @@ locals {
 
   monitoring_role_name = var.monitoring_role_name != "" ? var.monitoring_role_name : var.identifier
   monitoring_enabled   = var.monitoring_interval > 0 ? true : false
-  monitoring_role_arn  = var.monitoring_role_arn != "" ? var.monitoring_role_arn : aws_iam_role.db[0].arn
 
   db_name    = var.db_name != "" ? var.db_name : null
   admin_user = var.admin_user
