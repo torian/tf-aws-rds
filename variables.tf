@@ -21,6 +21,18 @@ variable "engine_version" {
   description = "(required) Engine version"
 }
 
+variable "create_parameter_group" {
+	type        = bool
+	description = "(optional - default: false) Create a custom parameter group"
+	default     = false
+}
+
+variable "parameter_group_family" {
+  type        = string
+  description = "(optional - default: empty) DB parameter group family to be copied as a new one"
+  default     = ""
+}
+
 variable "parameter_group_name" {
   type        = string
   description = "(optional - default: empty) DB parameter group"

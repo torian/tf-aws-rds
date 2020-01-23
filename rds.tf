@@ -13,7 +13,7 @@ resource "aws_db_instance" "db" {
   db_subnet_group_name  = var.db_subnet_group_name != "" ? var.db_subnet_group_name : aws_db_subnet_group.db[0].id
   publicly_accessible    = false
   vpc_security_group_ids = local.security_group_ids
-  parameter_group_name   = local.parameter_group
+  parameter_group_name   = var.create_parameter_group ? aws_db_parameter_group.db[0].id : null
 
   instance_class         = var.instance_class
   storage_type           = local.storage_type

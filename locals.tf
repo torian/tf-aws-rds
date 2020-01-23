@@ -14,10 +14,11 @@ locals {
 
   availability_zone     = var.az != "" ? var.az : null
 
-  parameter_group       = null
-
   iops                  = var.iops > 0 ? var.iops : null
   storage_type          = var.iops > 0 ? "io1" : var.storage_type
+
+  parameter_group_family = "${var.engine}${replace(var.engine_version, "/.[0-9]+$/", "")}"
+  parameter_group_name   = "${var.identifier}-${var.engine}-${replace(replace(var.engine_version, "/.[0-9]+$/", ""), ".", "-")}"
 
   monitoring_role_name = var.monitoring_role_name != "" ? var.monitoring_role_name : var.identifier
   monitoring_enabled   = var.monitoring_interval > 0 ? true : false
