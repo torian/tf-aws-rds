@@ -39,6 +39,12 @@ variable "parameter_group_name" {
   default     = ""
 }
 
+variable "parameters" {
+	type = list(map(string))
+	description = "(optional - default: []) List of maps to define parameters for the parameter group"
+	default     = []
+}
+
 variable "az" {
   type        = string
   description = "(required) Availability zone"
