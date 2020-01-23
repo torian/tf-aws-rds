@@ -46,6 +46,8 @@ resource "aws_db_instance" "db" {
 
   enabled_cloudwatch_logs_exports = var.cloudwatch_logs_exports
 
+  snapshot_identifier = var.snapshot_identifier != "" ? var.snapshot_identifier : null
+
   tags = var.tags
 }
 

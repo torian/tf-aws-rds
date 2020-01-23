@@ -180,6 +180,12 @@ variable "deletion_protection" {
   default     = false
 }
 
+variable "snapshot_identifier" {
+  type        = string
+  description = "(optional - snapshot ARN identifier if this instance is to be created from an existing snapshot)"
+  default     = ""
+}
+
 variable "cloudwatch_logs_exports" {
   type        = list
   description = ""
