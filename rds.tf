@@ -24,8 +24,8 @@ resource "aws_db_instance" "db" {
   ca_cert_identifier     = var.ca_cert_identifier
 
   monitoring_interval          = var.monitoring_interval
-  performance_insights_enabled = var.performance_insights_enabled
-  monitoring_role_arn          = var.monitoring_role_arn != "" ? var.monitoring_role_arn : aws_iam_role.db[0].arn
+  performance_insights_enabled = local.monitoring_enabled ? var.performance_insights_enabled : false
+  monitoring_role_arn          = local.monitoring_enabled ? (var.monitoring_role_arn != "" ? var.monitoring_role_arn : aws_iam_role.db[0].arn) : null
 
   iam_database_authentication_enabled = var.iam_auth_enabled
 
