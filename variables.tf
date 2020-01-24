@@ -132,6 +132,12 @@ variable "performance_insights_enabled" {
   default     = true
 }
 
+variable "allow_major_version_upgrade" {
+  type        = bool
+  description = "(optional - default: false) Allow major version upgrades"
+  default     = false
+}
+
 variable "minor_version_upgrade" {
   type        = bool
   description = "(optional - default: true) Automatically upgrade minor version"
@@ -252,6 +258,12 @@ variable "monitoring_role_name" {
   type        = string
   description = "(optional - default: empty) Name for the monitoring role"
   default     = ""
+}
+
+variable "apply_immediately" {
+  type        = bool
+  description = ""
+  default     = false
 }
 
 variable "db_iam_policies" {

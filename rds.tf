@@ -33,10 +33,11 @@ resource "aws_db_instance" "db" {
   username = local.admin_user
   password = local.admin_pass
 
-  auto_minor_version_upgrade = var.minor_version_upgrade
-  maintenance_window         = var.maintenance_window
-  backup_retention_period    = var.backup_retention_period
-  backup_window              = var.backup_window
+  allow_major_version_upgrade = var.allow_major_version_upgrade
+  auto_minor_version_upgrade  = var.minor_version_upgrade
+  maintenance_window          = var.maintenance_window
+  backup_retention_period     = var.backup_retention_period
+  backup_window               = var.backup_window
 
   skip_final_snapshot        = var.skip_final_snapshot
   final_snapshot_identifier  = local.final_snapshot_id
@@ -47,6 +48,7 @@ resource "aws_db_instance" "db" {
   enabled_cloudwatch_logs_exports = var.cloudwatch_logs_exports
 
   snapshot_identifier = var.snapshot_identifier != "" ? var.snapshot_identifier : null
+  apply_immediately   = var.apply_immediately
 
   tags = var.tags
 }

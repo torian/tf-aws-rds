@@ -17,5 +17,8 @@ resource "aws_db_parameter_group" "db" {
     }
   }
 
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
