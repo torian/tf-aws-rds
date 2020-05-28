@@ -308,4 +308,9 @@ variable "route53_record" {
   default     = ""
 }
 
+variable "slave_route53_record" {
+  type        = string
+  description = "(optional - default: empty) Route53 resource record for the slave/s endpoint"
+  default     = ""
+}
 
