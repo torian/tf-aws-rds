@@ -4,7 +4,7 @@ resource "aws_db_instance" "slave" {
   count = var.slave_count
 
   identifier             = "${var.identifier}-slave-${count.index + 1}"
-  replicate_source_db    = aws_db_instance.db.arn
+  replicate_source_db    = aws_db_instance.db.identifier
 
   engine                 = var.engine
   engine_version         = var.engine_version
