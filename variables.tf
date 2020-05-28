@@ -102,6 +102,18 @@ variable "instance_class" {
   description = "(required) DB instance class"
 }
 
+variable "slave_count" {
+  type        = number
+  description = "(optional - default: 0) Number of slaves"
+  default     = 0
+}
+
+variable "slave_instance_class" {
+  type        = string
+  description = "(optional) DB instance class"
+  default     = ""
+}
+
 variable "db_subnet_group_name" {
   type        = string
   description = "(optional - default: empty) DB subnet group name. If empty, the module will create it"
@@ -295,4 +307,5 @@ variable "route53_record" {
   description = "(optional - default: empty) Route53 resource record for the cluster endpoint"
   default     = ""
 }
+
 

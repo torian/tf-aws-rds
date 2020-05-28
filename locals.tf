@@ -27,6 +27,6 @@ locals {
   admin_user = var.admin_user
   admin_pass = var.admin_pass
 
-  final_snapshot_id       = var.final_snapshot_id == "" ? "${var.identifier}-final" : var.final_snapshot_id
+  final_snapshot_id       = var.final_snapshot_id == "" ? var.identifier : var.final_snapshot_id
 }
 

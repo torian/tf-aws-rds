@@ -15,6 +15,14 @@ resource "aws_security_group" "db" {
     cidr_blocks = [ "0.0.0.0/0" ]
   }
 
+  ingress {
+    from_port   = local.port
+    to_port     = local.port
+    protocol    = "tcp"
+    self        = true
+    description = "Master - Slave"
+  }
+
   dynamic "ingress" {
     iterator = i
     for_each = var.security_group_rules
