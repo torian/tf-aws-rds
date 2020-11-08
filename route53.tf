@@ -11,7 +11,7 @@ resource "aws_route53_record" "db" {
 }
 
 resource "aws_route53_record" "slaves" {
-  count = var.slave_count > 0 && var.slave_route53_record != "" ? var.slave_count : 0
+  count = var.route53_create_record && var.slave_route53_record != "" && var.slave_count > 0 ? var.slave_count : 0
 
   zone_id = var.route53_zone_id
   name    = "${var.slave_route53_record}-${count.index + 1}"
@@ -21,7 +21,7 @@ resource "aws_route53_record" "slaves" {
 }
 
 resource "aws_route53_record" "slave" {
-  count = var.slave_count > 0 && var.slave_route53_record != "" ? 1 : 0
+  count = var.route53_create_record && var.slave_route53_record != "" && var.slave_count > 0 ? 1: 0
 
   zone_id = var.route53_zone_id
   name    = var.slave_route53_record
